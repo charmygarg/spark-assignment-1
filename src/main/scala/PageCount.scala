@@ -8,8 +8,7 @@ class PageCount {
   }
 
   def getTotalPageCount: Double = {
-    getFileData.map(_.split(" ")(3).toLong)
-      .sum()
+    getFileData.map(_.split(" ")(3).toLong).sum()
   }
 
   def getTopTen: Array[Long] = {
@@ -26,9 +25,7 @@ class PageCount {
       (array(1).toLowerCase, array(3).toLong)
     }
     val pairData = filteredData.groupByKey().map(data => (data._1, data._2.sum))
-    pairData.filter {
-      _._2 > 200000
-    }.count()
+    pairData.filter(_._2 > 200000).count()
   }
 
   def getARType = {
